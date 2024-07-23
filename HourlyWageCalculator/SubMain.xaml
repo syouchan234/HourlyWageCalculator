@@ -3,55 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HourlyWageCalculator.SubMain"
              Title="履歴">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="メインページへ戻る" Clicked="MainPagePreview"/>
 
-        <!-- GridViewの例 -->
-        <Grid>
-            <!-- 行と列の定義 -->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <!-- グリッド内のアイテム -->
-            <Label Text="カテゴリ" Grid.Row="0" Grid.Column="0" />
-            <Label Text="アプリ・サイト名" Grid.Row="0" Grid.Column="1" />
-            <Label Text="ID" Grid.Row="0" Grid.Column="2" />
-            <Label Text="メールアドレス" Grid.Row="0" Grid.Column="3" />
-            <Label Text="パスワード" Grid.Row="0" Grid.Column="4" />
-            <Label Text="URL" Grid.Row="0" Grid.Column="5" />
-            <Label Text="備考" Grid.Row="0" Grid.Column="6" />
-            
-            <Label Text="Item 4" Grid.Row="1" Grid.Column="0" />
-            <Label Text="Item 5" Grid.Row="1" Grid.Column="1" />
-            <Label Text="Item 6" Grid.Row="1" Grid.Column="2" />
-            <Label Text="Item 7" Grid.Row="1" Grid.Column="3" />
-            <Label Text="Item 8" Grid.Row="1" Grid.Column="4" />
-            <Label Text="Item 9" Grid.Row="1" Grid.Column="5" />
-            <Label Text="Item 9" Grid.Row="1" Grid.Column="6" />
-
-            <Label Text="Item 10" Grid.Row="2" Grid.Column="0" />
-            <Label Text="Item 11" Grid.Row="2" Grid.Column="1" />
-            <Label Text="Item 12" Grid.Row="2" Grid.Column="2" />
-            <Label Text="Item 13" Grid.Row="2" Grid.Column="3" />
-            <Label Text="Item 14" Grid.Row="2" Grid.Column="4" />
-            <Label Text="Item 15" Grid.Row="2" Grid.Column="5" />
-            <Label Text="Item 16" Grid.Row="2" Grid.Column="6" />
-        </Grid>
-    </VerticalStackLayout>
+    <StackLayout>
+        <Label Text="sample">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState Name="Small">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Gray"></Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Medium">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="500"></AdaptiveTrigger>
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Green"></Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>
+        </Label>
+    </StackLayout>
 </ContentPage>
+

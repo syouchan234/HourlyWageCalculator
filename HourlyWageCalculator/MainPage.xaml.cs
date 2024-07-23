@@ -8,8 +8,8 @@ namespace HourlyWageCalculator
 {
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
-        public List<int> Hours { get; set; }
-        public List<int> Minutes { get; set; }
+        public List<int>? Hours { get; set; }
+        public List<int>? Minutes { get; set; }
 
         public MainPage()
         {
@@ -20,13 +20,13 @@ namespace HourlyWageCalculator
 
         private void InitializePickers()
         {
-            Hours = new List<int>();
+            Hours = [];
             for (int i = 0; i <= 23; i++)
             {
                 Hours.Add(i);
             }
 
-            Minutes = new List<int>();
+            Minutes = [];
             for (int i = 0; i <= 59; i++)
             {
                 Minutes.Add(i);
@@ -36,10 +36,13 @@ namespace HourlyWageCalculator
             OnPropertyChanged(nameof(Minutes));
         }
 
-        private async void SubMainPreview(object sender, EventArgs e)
+        private async void SaveBtn(object sender, EventArgs e)
         {
-            // サブページへ遷移
-            await Shell.Current.GoToAsync("SubMain");
+            bool result = await DisplayAlert(null, "保存しました", "OK", "履歴を確認");
+            if (!result)
+            {
+                await Shell.Current.GoToAsync("SubMain");
+            }
         }
 
         private void OnCalculateClicked(object sender, EventArgs e)
@@ -78,9 +81,9 @@ namespace HourlyWageCalculator
             int endHour = (int)EndHourPicker.SelectedItem;
             int endMinute = (int)EndMinutePicker.SelectedItem;
 
-            TimeSpan startTime = new TimeSpan(startHour, startMinute, 0);
-            TimeSpan endTime = new TimeSpan(endHour, endMinute, 0);
-            TimeSpan delayTime = new TimeSpan(0, (int)superTime, 0);
+            TimeSpan startTime = new (startHour, startMinute, 0);
+            TimeSpan endTime = new (endHour, endMinute, 0);
+            TimeSpan delayTime = new (0, (int)superTime, 0);
 
             // 勤務時間の計算
             TimeSpan workDuration = endTime - startTime - delayTime;
@@ -95,7 +98,7 @@ namespace HourlyWageCalculator
             decimal totalWage = hourlyWage * (decimal)workDuration.TotalHours;
 
             // 結果の表示
-            ResultLabel.Text = "総賃金:"+ $"￥{totalWage}";
+            ResultLabel.Text = "総賃金:"+ $"￥{(int)totalWage}";
             TimeRangeLabel.Text = $"{startHour:D2}:{startMinute:D2} ～ {endHour:D2}:{endMinute:D2}";
             WorkingTime.Text = "実働時間:" + $"{workDuration}";
         }

@@ -3,33 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HourlyWageCalculator.MainPage">
     <VerticalStackLayout Padding="30" Spacing="20">
-        <!--<Label Text="時給計算アプリ" FontSize="12" HorizontalOptions="Center" />-->
+
         <ScrollView HeightRequest="1000">
-        <VerticalStackLayout Spacing="20">
-                <Label Text="時給を入力してください" FontSize="14" HorizontalOptions="Center"/>
+            <VerticalStackLayout Spacing="20">
+                <Button Text="保存" Clicked="SaveBtn" Scale="0.6" HorizontalOptions="End"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="時給を入力してください" FontSize="14" HorizontalOptions="Center"/>
+                </HorizontalStackLayout>
+
                 <Entry x:Name="HourlyWageEntry" Placeholder="(例)990" Keyboard="Numeric" />
 
                 <Label Text="開始時間を入力してください" FontSize="14" HorizontalOptions="Center" />
-                <HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center">
                     <Picker x:Name="StartHourPicker" Title="時" WidthRequest="150" ItemsSource="{Binding Hours}" />
                     <Picker x:Name="StartMinutePicker" Title="分" WidthRequest="150" ItemsSource="{Binding Minutes}" />
                 </HorizontalStackLayout>
 
                 <Label Text="終了時間を入力してください" FontSize="14" HorizontalOptions="Center" />
-                <HorizontalStackLayout>
+                <HorizontalStackLayout HorizontalOptions="Center">
                     <Picker x:Name="EndHourPicker" Title="時" WidthRequest="150" ItemsSource="{Binding Hours}" />
                     <Picker x:Name="EndMinutePicker" Title="分" WidthRequest="150" ItemsSource="{Binding Minutes}" />
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout>
-                    <Label Text="休憩時間を入力してください" FontSize="14" HorizontalOptions="Center"/>
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,5">
+                    <Label Text="休憩時間を入力してください" FontSize="14" Margin="0,0,5,0" HorizontalOptions="Center"/>
                     <Label Text="※分単位で入力" FontSize="14" HorizontalOptions="Center" TextColor="Gray"/>
                 </HorizontalStackLayout>
                 
                 <Entry x:Name="SuperTime" Placeholder="(例)60" Keyboard="Numeric" />
 
                 <Button Text="計算" Clicked="OnCalculateClicked" />
-                <!--<Button Text="サブ画面へ" Clicked="SubMainPreview" />-->
 
                 <HorizontalStackLayout>
                     <Label x:Name="ResultLabel" FontSize="16" TextColor="Gray" Margin="10" VerticalOptions="Center"/>
