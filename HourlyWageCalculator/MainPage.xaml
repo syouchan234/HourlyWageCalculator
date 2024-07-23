@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HourlyWageCalculator.MainPage">
+    <VerticalStackLayout Padding="30" Spacing="20">
+        <!--<Label Text="時給計算アプリ" FontSize="12" HorizontalOptions="Center" />-->
+        <ScrollView HeightRequest="1000">
+        <VerticalStackLayout Spacing="20">
+                <Label Text="時給を入力してください" FontSize="14" HorizontalOptions="Center"/>
+                <Entry x:Name="HourlyWageEntry" Placeholder="(例)990" Keyboard="Numeric" />
+
+                <Label Text="開始時間を入力してください" FontSize="14" HorizontalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Picker x:Name="StartHourPicker" Title="時" WidthRequest="150" ItemsSource="{Binding Hours}" />
+                    <Picker x:Name="StartMinutePicker" Title="分" WidthRequest="150" ItemsSource="{Binding Minutes}" />
+                </HorizontalStackLayout>
+
+                <Label Text="終了時間を入力してください" FontSize="14" HorizontalOptions="Center" />
+                <HorizontalStackLayout>
+                    <Picker x:Name="EndHourPicker" Title="時" WidthRequest="150" ItemsSource="{Binding Hours}" />
+                    <Picker x:Name="EndMinutePicker" Title="分" WidthRequest="150" ItemsSource="{Binding Minutes}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label Text="休憩時間を入力してください" FontSize="14" HorizontalOptions="Center"/>
+                    <Label Text="※分単位で入力" FontSize="14" HorizontalOptions="Center" TextColor="Gray"/>
+                </HorizontalStackLayout>
+                
+                <Entry x:Name="SuperTime" Placeholder="(例)60" Keyboard="Numeric" />
+
+                <Button Text="計算" Clicked="OnCalculateClicked" />
+                <!--<Button Text="サブ画面へ" Clicked="SubMainPreview" />-->
+
+                <HorizontalStackLayout>
+                    <Label x:Name="ResultLabel" FontSize="16" TextColor="Gray" Margin="10" VerticalOptions="Center"/>
+                    <Label x:Name="TimeRangeLabel" FontSize="12" TextColor="Gray" Margin="10" VerticalOptions="Center" />
+                    <Label x:Name="WorkingTime" FontSize="12" TextColor="Gray" Margin="10" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HourlyWageCalculator.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:HourlyWageCalculator"
+    Shell.FlyoutBehavior="Disabled"
+    Title="HourlyWageCalculator">
+
+    <!--<ShellContent
+        Title="Main"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Sub"
+        ContentTemplate="{DataTemplate local:SubMain}"
+        Route="SubMain" />-->
+    <TabBar Title="Start">
+        <ShellContent
+        Title="計算開始"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+        <ShellContent
+        Title="履歴"
+        ContentTemplate="{DataTemplate local:SubMain}"
+        Route="SubMain" />
+    </TabBar>
+
+</Shell>
